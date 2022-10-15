@@ -1,26 +1,51 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {faClock} from "@fortawesome/free-solid-svg-icons"
+import PropType from "prop-types";
+import reload from "../index.js"
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
-const Home = () => {
+const Home = (props) => {
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<div className="container-fluid text-center">	
+			<div className="mainDiv">
+				<div className="smallBack">
+				<FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
+				</div>
+				<div className="smallBack">
+					{props.digitFour}
+				</div>
+				<div className="smallBack">
+					{props.digitThree}
+				</div>
+				<div className="smallBack">
+					{props.digitTwo}
+				</div>
+				<div className="smallBack">
+					{props.digitOne}
+				</div>
+			</div>
+			<div>
+				<button onClick = { reload } className="refresh">Click to reload!</button>
+			</div>
+			
+		</div>		
 	);
 };
 
+
+Home.propTypes = {
+	digitOne: PropType.number,
+	digitTwo: PropType.number,
+	digitThree: PropType.number,
+	digitFour: PropType.number
+};
+
+
+
+
+
 export default Home;
+
